@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Velocity AI Partners — Documentation</title>
+<meta name="description" content="A complete, plain-language guide to the Velocity AI dashboard: your Overview reports, your AI Employees, your Information Sets, the automated campaigns we run, and best practices to get the most out of the system." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --brand:#4f46e5;
+    --brand-2:#8b5cf6;
+    --ink:#0f172a;
+    --ink-soft:#475569;
+    --ink-faint:#64748b;
+    --line:#e6e9ef;
+    --bg:#ffffff;
+    --bg-alt:#f8fafc;
+    --code:#f1f5f9;
+    --radius:14px;
+    --shadow:0 1px 2px rgba(15,23,42,.04), 0 10px 30px rgba(15,23,42,.05);
+    --sidebar-w:288px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased;font-size:16px}
+  a{color:var(--brand);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* Layout */
+  .shell{display:flex;min-height:100vh}
+  /* Sidebar */
+  aside.side{position:sticky;top:0;align-self:flex-start;width:var(--sidebar-w);height:100vh;overflow-y:auto;border-right:1px solid var(--line);padding:22px 18px 60px;background:var(--bg-alt)}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em;font-size:16px;padding:6px 8px 16px;color:var(--ink)}
+  .brand .dot{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:0 4px 12px rgba(79,70,229,.35);position:relative;flex:none}
+  .brand .dot::after{content:"";position:absolute;inset:7px 6px;border-left:3px solid #fff;border-bottom:3px solid #fff;transform:rotate(-45deg);border-radius:1px}
+  .toc-group{margin-top:14px}
+  .toc-group .lbl{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-faint);padding:6px 8px}
+  .toc-group a{display:block;color:var(--ink-soft);font-size:14px;font-weight:500;padding:6px 10px;border-radius:8px;text-decoration:none}
+  .toc-group a:hover{background:rgba(79,70,229,.07);color:var(--brand)}
+  .toc-group a.sub{padding-left:22px;font-size:13.5px;color:var(--ink-faint)}
+
+  /* Main */
+  main{flex:1;min-width:0;max-width:860px;margin:0 auto;padding:0 40px 120px}
+  .topbar{display:none}
+
+  .hero{padding:64px 0 34px;border-bottom:1px solid var(--line);margin-bottom:14px}
+  .eyebrow{display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--brand);background:rgba(79,70,229,.08);padding:6px 12px;border-radius:999px;margin-bottom:18px}
+  .hero h1{font-size:clamp(30px,4.2vw,42px);line-height:1.1;letter-spacing:-.03em;margin:0 0 14px;font-weight:800}
+  .hero p.lede{font-size:18.5px;color:var(--ink-soft);margin:0;max-width:680px}
+
+  section{padding:42px 0;border-bottom:1px solid var(--line)}
+  section:last-of-type{border-bottom:none}
+  .sec-num{font-size:13px;font-weight:700;color:var(--brand);letter-spacing:.04em}
+  h2{font-size:27px;letter-spacing:-.02em;margin:6px 0 14px;font-weight:800;scroll-margin-top:24px}
+  h3{font-size:18.5px;margin:30px 0 8px;font-weight:700;letter-spacing:-.01em;scroll-margin-top:24px;display:flex;align-items:center;gap:10px}
+  h3 .pin{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-size:16px;background:linear-gradient(135deg,rgba(79,70,229,.12),rgba(139,92,246,.12));flex:none}
+  p{margin:0 0 14px;color:var(--ink-soft)}
+  main p strong, main li strong{color:var(--ink)}
+  ul,ol{color:var(--ink-soft);margin:0 0 16px;padding-left:22px}
+  li{margin:6px 0}
+
+  .meta{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px}
+  .tag{font-size:12px;font-weight:600;color:var(--ink-soft);background:var(--bg-alt);border:1px solid var(--line);padding:4px 10px;border-radius:8px}
+  .tag.b{color:var(--brand);background:rgba(79,70,229,.07);border-color:rgba(79,70,229,.2)}
+
+  .note{display:flex;gap:12px;background:rgba(79,70,229,.05);border:1px solid rgba(79,70,229,.18);border-left:4px solid var(--brand);border-radius:10px;padding:14px 16px;margin:16px 0}
+  .note .i{flex:none;font-size:18px;line-height:1.4}
+  .note p{margin:0;color:var(--ink)}
+  .note.warn{background:#fff7ed;border-color:#fdba74;border-left-color:#f97316}
+
+  .feature{padding:18px 0;border-top:1px dashed var(--line)}
+  .feature:first-of-type{border-top:none}
+  .feat-h{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700;margin:0 0 6px}
+  .feat-h .pin{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;font-size:15px;background:linear-gradient(135deg,rgba(79,70,229,.12),rgba(139,92,246,.12));flex:none}
+  .feat-use{font-size:14px;color:var(--ink-faint);margin:8px 0 0}
+  .feat-use b{color:var(--ink)}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:8px 0 4px}
+  @media(max-width:680px){.grid2{grid-template-columns:1fr}}
+  .mini{background:var(--bg-alt);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .mini h4{margin:0 0 6px;font-size:15px;font-weight:700;display:flex;gap:8px;align-items:center}
+  .mini p{margin:0;font-size:14px}
+
+  footer{padding:40px;color:var(--ink-faint);font-size:14px;text-align:center}
+
+  /* Mobile */
+  @media(max-width:900px){
+    aside.side{display:none}
+    main{padding:0 22px 90px;max-width:100%}
+    .topbar{display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:12px 22px;margin:0 -22px 0}
+    .topbar .brand{padding:0;font-size:15px}
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- SIDEBAR -->
+  <aside class="side">
+    <div class="brand"><span class="dot"></span> Velocity AI Partners</div>
+    <div class="toc-group">
+      <div class="lbl">Getting Started</div>
+      <a href="#overview">Overview</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#concepts">Key concepts</a>
+    </div>
+    <div class="toc-group">
+      <div class="lbl">Your Dashboard</div>
+      <a href="#overview-tab">The Overview tab</a>
+      <a href="#overview-tab" class="sub">Value Tracker</a>
+      <a href="#overview-tab" class="sub">Analytics</a>
+      <a href="#overview-tab" class="sub">Auto Research</a>
+      <a href="#overview-tab" class="sub">Trials &amp; Conversions</a>
+      <a href="#ai-employees">Your AI Employees</a>
+      <a href="#information-sets">Information Sets</a>
+      <a href="#campaigns">Campaigns</a>
+    </div>
+    <div class="toc-group">
+      <div class="lbl">Help &amp; Reference</div>
+      <a href="#best-practices">Best practices</a>
+      <a href="#faq">FAQ</a>
+      <a href="#help">Getting help</a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main>
+    <div class="topbar"><span class="brand"><span class="dot"></span> Velocity AI Partners</span></div>
+
+    <div class="hero">
+      <span class="eyebrow">Client Documentation</span>
+      <h1>Your guide to the Velocity AI platform</h1>
+      <p class="lede">Velocity is your always-on AI texting team. It follows up with every lead and member at the right moment, books appointments, answers questions, and brings people back, while you watch it all from one dashboard. This guide explains every part of that dashboard in plain language, the campaigns running behind the scenes, and how to get the best results.</p>
+    </div>
+
+    <!-- 01 OVERVIEW -->
+    <section id="overview">
+      <div class="sec-num">01</div>
+      <h2>Overview</h2>
+      <p>Velocity connects to your booking system (ClubReady, WellnessLiving, or Spark) and watches for the moments that matter: a new lead, an upcoming appointment, a member who's gone quiet, a cancellation. When one of those moments happens, an AI assistant reaches out by text from your studio's number, holds a natural back-and-forth conversation, and drives toward the outcome you want, usually a booked visit or a renewed membership.</p>
+      <p>Everything the AI does is visible to you in real time. You can read any conversation, step in whenever you like, see exactly how much revenue the system is producing, and control the facts it uses to answer questions. Nothing is a black box.</p>
+      <div class="note"><span class="i">💡</span><p><strong>The one-line version:</strong> Velocity is the follow-up your team never has time for, done instantly, consistently, and around the clock, for every single lead and member.</p></div>
+    </section>
+
+    <!-- 02 HOW IT WORKS -->
+    <section id="how-it-works">
+      <div class="sec-num">02</div>
+      <h2>How it works</h2>
+      <p>You don't have to run anything day to day. The system runs a simple loop for you:</p>
+      <ol>
+        <li><strong>It listens.</strong> Velocity stays synced with your CRM and notices events as they happen, new leads, booked demos, no-shows, cancellations, birthdays, and members who haven't been in for a while.</li>
+        <li><strong>It reaches out.</strong> At the right moment, the AI sends a friendly, on-brand text from your studio's phone number, written to sound like a real person on your team.</li>
+        <li><strong>It holds the conversation.</strong> When the person replies, the AI answers their questions using <em>your</em> business facts, handles objections, and offers to book them in.</li>
+        <li><strong>It books and updates.</strong> Appointments get scheduled, reminders go out, and your CRM stays up to date, automatically.</li>
+        <li><strong>It hands off when needed.</strong> If a conversation needs a human, the AI flags it for your team instead of guessing.</li>
+      </ol>
+      <p>Your job is light: keep the AI's knowledge accurate, glance at flagged conversations, and check your numbers. The rest of this guide walks through where to do each of those things.</p>
+    </section>
+
+    <!-- 03 KEY CONCEPTS -->
+    <section id="concepts">
+      <div class="sec-num">03</div>
+      <h2>Key concepts</h2>
+      <p>The dashboard is organized around a few simple ideas. Once these click, everything else is easy to find.</p>
+
+      <div class="grid2">
+        <div class="mini"><h4>🤖 AI Employees</h4><p>Each "employee" is an AI assistant dedicated to one job, nurturing new leads, winning back old ones, retaining members, or answering website inquiries. They work the conversations so your team doesn't have to.</p></div>
+        <div class="mini"><h4>📂 Information Sets</h4><p>The controls behind the AI: the facts it knows, the timing of its messages, the people it shouldn't contact, and the conversations a human should review. This is where you steer the system.</p></div>
+        <div class="mini"><h4>📍 Locations</h4><p>If you run more than one studio, every page filters to the location you've selected. Conversations, numbers, and settings are kept separate and clean per location.</p></div>
+        <div class="mini"><h4>🙋 Human in the loop</h4><p>The AI is confident on routine conversations and cautious on tricky ones. Anything sensitive or uncertain is set aside for a person, so you stay in control of the important moments.</p></div>
+      </div>
+    </section>
+
+    <!-- 04 OVERVIEW TAB -->
+    <section id="overview-tab">
+      <div class="sec-num">04</div>
+      <h2>The Overview tab: your numbers</h2>
+      <p>The Overview group is where you go to answer "is this working, and what is it earning me?" These pages turn thousands of text messages into clear performance you can act on.</p>
+
+      <div class="feature">
+        <div class="feat-h"><span class="pin">💵</span> Value Tracker</div>
+        <p>Your home screen and the most important page in the app. It answers one question honestly: <em>what is Velocity actually doing for my business?</em> At the top you pick a time window (<strong>30, 60, or 91 days</strong>) and, where relevant, the campaign you want to look at, and every number updates to match.</p>
+
+        <p><strong>The headline numbers (Executive Summary).</strong> The summary at the top is your bottom line at a glance:</p>
+        <ul>
+          <li><strong>Total Investment</strong> — what you pay for the system in that period.</li>
+          <li><strong>Total Value Generated</strong> — the full dollar value the AI produced.</li>
+          <li><strong>Net Return</strong> — value generated minus your investment: your profit from the system.</li>
+          <li><strong>Revenue Added</strong> — new revenue the AI drove. Deliberately conservative, cancelled members are not counted.</li>
+          <li><strong>Labor Saved</strong> — the staff time and cost the AI handled instead of your team.</li>
+        </ul>
+
+        <p><strong>Proof it's working (before vs after).</strong> <strong>Baseline vs Current</strong> and the <strong>Pre vs Post AI</strong> trend place your numbers from before Velocity next to your numbers now, so the lift is impossible to argue with.</p>
+
+        <p><strong>Operational signals.</strong> A few cards tell you how the machine is running, not just what it earned:</p>
+        <ul>
+          <li><strong>Speed-to-Lead (30d)</strong> — how fast new leads get a first message. Faster contact means more bookings, and this is where the AI beats any human team.</li>
+          <li><strong>AI Containment (30d)</strong> — the share of conversations the AI handled start to finish without needing a person. Higher means less landing on your desk.</li>
+          <li><strong>Conversion Velocity</strong> — how quickly leads move from first contact to booked. Slowing velocity is an early warning to refresh an offer.</li>
+          <li><strong>After-Hours Value</strong> — revenue and bookings captured outside business hours, the leads a closed front desk would have missed.</li>
+        </ul>
+
+        <p><strong>By location and over time.</strong> <strong>Net Return by Location</strong> and <strong>Month-to-Date Return by Location</strong> rank your studios, while <strong>Monthly Performance</strong>, the <strong>Lead Nurture Funnel</strong>, and the performance-trend charts show momentum across the last 30 days.</p>
+
+        <div class="note"><span class="i">🛠️</span><p><strong>How to use it to run the business:</strong> open it weekly. A healthy <strong>Net Return</strong> is hard proof of ROI for any conversation about the spend. If <strong>Speed-to-Lead</strong> slips or <strong>Conversion Velocity</strong> slows, leads are cooling, refresh an offer or check your CRM is feeding leads in. A high <strong>After-Hours Value</strong> shows how much business you'd lose without always-on coverage. And <strong>Net Return by Location</strong> shows which studio is winning, so you can copy what it's doing everywhere else.</p></div>
+      </div>
+
+      <div class="feature">
+        <div class="feat-h"><span class="pin">📊</span> Analytics</div>
+        <p>Where Value Tracker shows the money, Analytics shows the <em>why</em> behind it. It's organized into tabs so you can go from a high-level read down to the exact stage that needs attention.</p>
+
+        <p><strong>Summary.</strong> Your at-a-glance scoreboard: <strong>People Reached</strong>, <strong>Unique Conversations</strong>, <strong>Booking Rate</strong>, <strong>Leads per Member</strong> (how many leads it takes to make one new member), <strong>Revenue Influenced</strong>, and <strong>Active Members</strong> over time. You can also schedule this as an automatic report, <strong>weekly, bi-weekly, or monthly</strong>, sent straight to your inbox.</p>
+
+        <p><strong>Funnel.</strong> A visual map of how people flow from first contact, to booked, to member, with the drop-off shown at each stage. The fastest way to see exactly <em>where</em> you're losing people.</p>
+
+        <p><strong>Schedule.</strong> When your audience actually replies and books, by day and hour, so you know the best windows to push a promo or staff the front desk.</p>
+
+        <p><strong>Employees.</strong> Each AI Employee's performance side by side, reach, reply rate, and bookings, so you can see which campaigns are pulling their weight.</p>
+
+        <p><strong>Members &amp; Ex-Members.</strong> The Members tab tracks the health of your current base and who's at risk of churning. Ex-Members analyzes who left and the win-back opportunity among them.</p>
+
+        <p><strong>A/B Analytics.</strong> Results of message tests, which wording earned more replies and bookings, so the system keeps adopting the winners. <span class="tag">Admin view</span></p>
+
+        <p><strong>Franchise Overview.</strong> For multi-location operators, every studio ranked side by side on the metrics that matter. <span class="tag">Multi-location</span></p>
+
+        <div class="note"><span class="i">🛠️</span><p><strong>How to use it to run the business:</strong> start on <strong>Summary</strong> for the trend, then open <strong>Funnel</strong> and fix the stage with the biggest drop-off, a leak between "booked" and "showed" is a no-show problem (lean on Demo Reminder), while a leak at "replied" is a messaging or offer problem. Use <strong>Schedule</strong> to time promos for when people actually respond, watch the <strong>Members</strong> tab to catch churn early and trigger retention outreach, and let <strong>A/B Analytics</strong> settle any wording debate with real numbers. Multi-location? <strong>Franchise Overview</strong> shows who's best so you can standardize on what works. Set the <strong>scheduled report</strong> so the key numbers come to you without logging in.</p></div>
+      </div>
+
+      <div class="feature">
+        <div class="feat-h"><span class="pin">🧪</span> Auto Research</div>
+        <p>A testing lab for your messaging. Before a wording goes out widely, Auto Research can run it past simulated customer profiles to predict how real leads and members are likely to react, so the system keeps improving what it says without experimenting on your actual customers.</p>
+        <p class="feat-use"><b>Use it to:</b> understand why the AI phrases things the way it does and trust that message wording is tested, not guessed.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feat-h"><span class="pin">✅</span> Trials &amp; Conversions <span class="tag">labeled "Bookings &amp; Conversions" at Stretch locations</span></div>
+        <p>Tracks the journey that matters most: people who came in for a first visit or trial and whether they converted into paying members. It connects the AI's outreach to real outcomes in your CRM so you can see conversion, not just activity.</p>
+        <p class="feat-use"><b>Use it to:</b> measure trial-to-member conversion and see the AI's role in closing them.</p>
+      </div>
+    </section>
+
+    <!-- 05 AI EMPLOYEES -->
+    <section id="ai-employees">
+      <div class="sec-num">05</div>
+      <h2>Your AI Employees</h2>
+      <p>This group is the working floor, the live conversation inboxes. Each AI Employee handles one category of contact. You can open any of them to read every thread, see status at a glance, and jump in to take over whenever you want.</p>
+
+      <div class="feature">
+        <div class="feat-h"><span class="pin">📇</span> All Contacts</div>
+        <p>The complete directory of everyone in your system across every channel, leads, members, and former members, in one searchable place. The starting point when you want to look someone up regardless of which campaign they're in.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feat-h"><span class="pin">💬</span> Conversations</div>
+        <p>A unified inbox of every text thread the AI is handling, all channels in one stream. Read messages as they happen, search history, and take over a conversation with a tap. This is the fastest way to get a feel for what your members and leads are actually saying.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feat-h"><span class="pin">🌱</span> Lead Nurturing</div>
+        <p>The assistant for brand-new leads. The moment someone shows interest, it reaches out fast, answers questions, and guides them toward booking a first visit, before the lead goes cold. Speed here is everything, and this employee never sleeps.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feat-h"><span class="pin">🔄</span> Lead Reactivation</div>
+        <p>The win-back specialist for older leads who showed interest but never booked. It re-engages stale lists with fresh, friendly outreach, turning contacts you'd written off back into appointments.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feat-h"><span class="pin">❤️</span> Customer Retention</div>
+        <p>The assistant focused on your current members, well-timed check-ins, support, and re-engagement for anyone slipping toward cancellation. Keeping a member is far cheaper than finding a new one, and this employee works that angle every day.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feat-h"><span class="pin">📨</span> Website Inquiries</div>
+        <p>Handles people who fill out a form on your website. It responds within moments, so a hot lead never waits hours for a reply, and routes them toward booking. <span class="tag">Shown when your location uses website lead capture</span></p>
+      </div>
+
+      <div class="note"><span class="i">👀</span><p>You can take over any conversation at any time. When you do, the AI steps back so you and the assistant aren't both replying at once. See best practice #2 in section 08.</p></div>
+    </section>
+
+    <!-- 06 INFORMATION SETS -->
+    <section id="information-sets">
+      <div class="sec-num">06</div>
+      <h2>Information Sets: the controls</h2>
+      <p>If the AI Employees are the staff, Information Sets are the training manual and the rules they follow. This is where you shape what the AI knows and how it behaves. A few minutes spent here is the single biggest lever on your results.</p>
+
+      <div class="feature">
+        <div class="feat-h"><span class="pin">📚</span> Knowledge Base</div>
+        <p>The facts the AI uses to answer questions: your pricing, hours, location, programs, current offers, and policies. The AI only speaks as accurately as this page allows, so keeping it current is the most valuable thing you can do. When a price or promo changes, update it here (or tell your Velocity contact) and every future message reflects it instantly.</p>
+        <p class="feat-use"><b>Look after this first.</b> An out-of-date Knowledge Base is the most common cause of an off-message reply.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feat-h"><span class="pin">🔀</span> Messaging Flow</div>
+        <p>Controls the sequence and timing of follow-ups, how many times the AI reaches out, how long it waits between messages, and the response-time rules. It's the map of how a conversation unfolds over hours and days so nobody is forgotten and nobody is pestered.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feat-h"><span class="pin">🚩</span> Red Flag System</div>
+        <p>The human-review queue. When the AI encounters something sensitive or that it isn't confident about, it sets the message aside here for a person to check or rewrite, rather than guessing. A quick daily glance ensures the handful of conversations that need a personal touch get one.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feat-h"><span class="pin">🚫</span> Do Not Contact</div>
+        <p>The suppression list. Anyone who opts out, replies "STOP," or shouldn't be messaged is recorded here and automatically excluded from all outreach. Opt-outs are handled for you and compliantly, this page is simply your visibility into who's on the list.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feat-h"><span class="pin">📅</span> Booking Notifications</div>
+        <p>A running log of the appointments the AI has booked, so your front desk always knows what's coming in from automated conversations. Use it to keep your schedule and your team in sync with what the assistant is doing.</p>
+      </div>
+    </section>
+
+    <!-- 07 CAMPAIGNS -->
+    <section id="campaigns">
+      <div class="sec-num">07</div>
+      <h2>Campaigns</h2>
+      <p>Campaigns are the automated message flows that do the actual outreach, each one triggered by a real event in your CRM. The <strong>Campaigns</strong> page in your dashboard is mission control for all of them: it shows every campaign type, marks each one <em>Active</em>, <em>Paused</em>, or <em>Not configured</em> for your location, and lets you switch any of them on or off for your studio with a single toggle. For each campaign you'll also see four numbers at a glance, <strong>Total Sent</strong>, <strong>In Follow-up</strong>, <strong>Response Rate</strong>, and <strong>Booking Rate</strong>, so you always know what's working.</p>
+      <p>You don't run these day to day. Below is every campaign type and exactly what it does, so you always know what your leads and members are receiving. The short line under each name is the description shown on the Campaigns page itself.</p>
+
+      <div class="feature">
+        <div class="feat-h"><span class="pin">🌱</span> Lead Nurture</div>
+        <div class="meta"><span class="tag b">Fires when a new lead arrives</span><span class="tag">Engage new leads with automated SMS sequences</span></div>
+        <p>The instant a new lead comes in, the AI texts to introduce your studio, answer first questions, and guide them toward booking a first visit, all while interest is still hot. Fast first contact is the single biggest driver of lead conversion, and this runs in seconds, any time of day, then keeps following up over a sequence so no one is forgotten after one unanswered text.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feat-h"><span class="pin">🔄</span> Lead Reactivation</div>
+        <div class="meta"><span class="tag b">Fires for leads who went cold</span><span class="tag">Re-engage leads that went cold</span></div>
+        <p>Reaches back out to older leads who once showed interest but never booked, with a fresh, low-pressure nudge, recovering appointments from a list most studios write off and never touch again.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feat-h"><span class="pin">🎯</span> Demo Reactivation</div>
+        <div class="meta"><span class="tag b">Fires after a demo that didn't convert</span><span class="tag">Follow up with demos that did not convert</span></div>
+        <p>Follows up with people who came in for a demo or intro session but didn't sign up, gently addresses what held them back, and invites them to commit, recovering sales that would otherwise walk out the door.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feat-h"><span class="pin">⏰</span> Demo Reminder</div>
+        <div class="meta"><span class="tag b">Fires ~2 hours before a booked demo</span><span class="tag">Confirm or reschedule an upcoming appointment</span></div>
+        <p>About two hours before a booked demo, the AI sends a reminder text asking the person to confirm they're still coming, or to reschedule if they can't make it. It's one of the most effective ways to cut no-shows: every confirmed appointment is one your team can count on, and anyone who needs to move their slot can do it right from the text instead of simply not showing up.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feat-h"><span class="pin">💜</span> Ex-Member</div>
+        <div class="meta"><span class="tag b">Fires for cancelled / former members</span><span class="tag">Win back former members</span></div>
+        <p>Respectfully invites former members to return, often paired with the right offer, recovering revenue from people who already know and like your studio, usually your warmest audience.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feat-h"><span class="pin">📨</span> Post-Appointment</div>
+        <div class="meta"><span class="tag b">Fires after any appointment</span><span class="tag">Follow-up after completed, cancelled, or no-show appointments</span></div>
+        <p>Follows up after an appointment whatever the outcome, re-booking no-shows, recovering cancellations, and checking in after a completed visit, so no appointment is ever a dead end and every visit has a clear next step.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feat-h"><span class="pin">❤️</span> Client Retention</div>
+        <div class="meta"><span class="tag b">Runs continuously for active members</span><span class="tag">Keep current members engaged and reduce churn</span></div>
+        <p>Caring, well-timed check-ins that keep current members engaged and catch the early signs of someone drifting away, so you save the membership before it lapses, the cheapest growth there is.</p>
+      </div>
+
+      <div class="note"><span class="i">🧩</span><p>Not every campaign runs at every location. Which ones are active depends on your brand, your CRM, and what you've asked us to turn on, and you can change it any time from the Campaigns page. Anything marked "Not configured" simply hasn't been set up for your studio yet, just ask and we'll switch it on.</p></div>
+    </section>
+
+    <!-- 08 BEST PRACTICES -->
+    <section id="best-practices">
+      <div class="sec-num">08</div>
+      <h2>Best practices</h2>
+      <p>A few simple habits make a big difference in your results.</p>
+      <ol>
+        <li><strong>Keep your Knowledge Base current.</strong> The AI is only as accurate as what it knows. When pricing, hours, offers, or a promo change, update the <a href="#information-sets">Knowledge Base</a> (or tell us) so every text quotes the right thing. This is the highest-leverage habit by far.</li>
+        <li><strong>Let the AI finish, or take over fully.</strong> If you want to handle a conversation yourself, jump in and take it over. Avoid sending a manual text in the middle of an active AI thread, as it can cross wires with the automated reply.</li>
+        <li><strong>Check the Red Flag queue daily.</strong> It's a quick glance, and it ensures the few conversations that genuinely need a human get a person's attention.</li>
+        <li><strong>Review the Value Tracker weekly.</strong> It's the clearest picture of what the system is earning you. A weekly look keeps you confident in the ROI and helps you spot trends early.</li>
+        <li><strong>Trust the opt-out handling.</strong> "STOP" requests, wrong-number replies, and quiet declines are managed automatically and compliantly. You don't need to track them by hand, the <a href="#information-sets">Do Not Contact</a> list is your visibility into it.</li>
+        <li><strong>Give us a heads-up on big changes.</strong> New location, new staff phone number, a seasonal promo, or a pricing change? Tell us early so the campaigns and messages stay perfectly on-brand.</li>
+      </ol>
+    </section>
+
+    <!-- 09 FAQ -->
+    <section id="faq">
+      <div class="sec-num">09</div>
+      <h2>FAQ</h2>
+
+      <h3>Will the AI ever say something wrong about my business?</h3>
+      <p>It answers strictly from your Knowledge Base, and anything it's unsure about goes to the Red Flag queue for a human instead of being guessed at. Keeping your Knowledge Base current is what keeps replies accurate.</p>
+
+      <h3>Can I take over a conversation myself?</h3>
+      <p>Yes, any time. Open the thread in the relevant AI Employee inbox (or Conversations) and reply. The AI steps back so you're not both messaging at once.</p>
+
+      <h3>What number do the texts come from?</h3>
+      <p>Your studio's dedicated number, so to the customer it reads as your business, not a third party.</p>
+
+      <h3>How are opt-outs and compliance handled?</h3>
+      <p>Automatically. When someone opts out or replies "STOP," they're added to Do Not Contact and excluded from all future outreach. Polite declines and wrong-number replies are treated as opt-outs too.</p>
+
+      <h3>Does it work across multiple locations?</h3>
+      <p>Yes. Every page filters to the location you select, with conversations, numbers, and settings kept separate per studio.</p>
+
+      <h3>Do I have to manage the campaigns?</h3>
+      <p>No. They run automatically based on events in your CRM. You can see what's active and how it's performing on the Campaigns page, but there's nothing to operate day to day.</p>
+    </section>
+
+    <!-- 10 HELP -->
+    <section id="help">
+      <div class="sec-num">10</div>
+      <h2>Getting help</h2>
+      <p>For a change request, a question, a new promo, or to add a location, reach out to your Velocity point of contact and we'll take care of it. You can also sign in to your dashboard any time at <a href="https://velocityaipartners.app">velocityaipartners.app</a>.</p>
+      <div class="note"><span class="i">📌</span><p>The features visible in your account depend on your brand, CRM, and plan, so your sidebar may not show every page described here. If something's missing that you'd like turned on, just ask.</p></div>
+    </section>
+
+    <footer>Velocity AI Partners — Client Documentation</footer>
+  </main>
+</div>
+</body>
+</html>
