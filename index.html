@@ -103,21 +103,78 @@
 
   footer{padding:40px;color:var(--ink-faint);font-size:14px;text-align:center}
 
+  /* Updated date */
+  .updated{font-size:13px;color:var(--ink-faint);margin-top:16px;font-weight:500}
+
+  /* Sidebar search */
+  .toc-search{position:relative;margin:2px 8px 8px}
+  .toc-search input{width:100%;font:inherit;font-size:13.5px;padding:8px 10px 8px 30px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+  .toc-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);font-size:12px;opacity:.55;pointer-events:none}
+  .toc-group a.active{background:rgba(79,70,229,.10);color:var(--brand);font-weight:600}
+  .toc-empty{display:none;font-size:13px;color:var(--ink-faint);padding:8px 10px}
+  body.searching .toc-group .lbl{display:none}
+
+  /* Skip link */
+  .skip{position:absolute;left:-9999px;top:0;background:var(--brand);color:#fff;padding:10px 16px;border-radius:0 0 8px 0;z-index:100;font-weight:600}
+  .skip:focus{left:0}
+
+  /* Focus visibility */
+  a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:4px}
+
+  /* Screenshot figures */
+  .feature{scroll-margin-top:80px}
+  figure.shot{margin:16px 0 4px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--bg-alt)}
+  figure.shot img{display:block;width:100%;height:auto}
+  figure.shot figcaption{font-size:13px;color:var(--ink-faint);padding:10px 14px;border-top:1px solid var(--line)}
+
+  /* Back to top */
+  .totop{position:fixed;right:22px;bottom:22px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--bg);color:var(--brand);font-size:20px;cursor:pointer;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .2s;z-index:50;display:grid;place-items:center}
+  .totop.show{opacity:1;pointer-events:auto}
+  .totop:hover{background:var(--brand);color:#fff}
+
+  /* Mobile menu button + drawer backdrop */
+  .menu-btn{display:none;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid var(--line);border-radius:9px;background:var(--bg);cursor:pointer;font-size:17px;color:var(--ink)}
+  .nav-backdrop{display:none;position:fixed;inset:0;background:rgba(15,23,42,.4);z-index:45}
+
   /* Mobile */
   @media(max-width:900px){
-    aside.side{display:none}
+    aside.side{position:fixed;top:0;left:0;z-index:50;height:100vh;width:min(86vw,300px);display:block;transform:translateX(-100%);transition:transform .25s ease;box-shadow:0 0 40px rgba(15,23,42,.18)}
+    body.nav-open aside.side{transform:translateX(0)}
+    body.nav-open .nav-backdrop{display:block}
     main{padding:0 22px 90px;max-width:100%}
-    .topbar{display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:12px 22px;margin:0 -22px 0}
+    .topbar{display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:12px 22px;margin:0 -22px 0}
     .topbar .brand{padding:0;font-size:15px}
+    .menu-btn{display:grid}
+  }
+
+  /* Reduced motion */
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *{transition:none!important;animation:none!important}
+  }
+
+  /* Print */
+  @media print{
+    aside.side,.topbar,.totop,.nav-backdrop{display:none!important}
+    .shell{display:block}
+    main{max-width:100%;padding:0}
+    section{break-inside:avoid;border-bottom:1px solid #ccc}
+    .role-cards,.feature,figure.shot{break-inside:avoid}
+    a{color:#000;text-decoration:underline}
+    .note{border:1px solid #999;background:#fff}
+    body{font-size:12px;color:#000}
   }
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="nav-backdrop"></div>
 <div class="shell">
 
   <!-- SIDEBAR -->
   <aside class="side">
     <div class="brand"><span class="dot"></span> Velocity AI Partners</div>
+    <div class="toc-search"><span class="si" aria-hidden="true">🔍</span><input type="search" id="tocSearch" placeholder="Filter sections…" aria-label="Filter sections" /></div>
     <div class="toc-group">
       <div class="lbl">Getting Started</div>
       <a href="#overview">Overview</a>
@@ -127,10 +184,10 @@
     <div class="toc-group">
       <div class="lbl">Your Dashboard</div>
       <a href="#overview-tab">The Overview tab</a>
-      <a href="#overview-tab" class="sub">Value Tracker</a>
-      <a href="#overview-tab" class="sub">Analytics</a>
-      <a href="#overview-tab" class="sub">Auto Research</a>
-      <a href="#overview-tab" class="sub">Trials &amp; Conversions</a>
+      <a href="#value-tracker" class="sub">Value Tracker</a>
+      <a href="#analytics" class="sub">Analytics</a>
+      <a href="#auto-research" class="sub">Auto Research</a>
+      <a href="#trials-conversions" class="sub">Trials &amp; Conversions</a>
       <a href="#ai-employees">Your AI Employees</a>
       <a href="#information-sets">Information Sets</a>
       <a href="#campaigns">Campaigns</a>
@@ -141,16 +198,18 @@
       <a href="#faq">FAQ</a>
       <a href="#help">Getting help</a>
     </div>
+    <div class="toc-empty">No matching sections</div>
   </aside>
 
   <!-- MAIN -->
-  <main>
-    <div class="topbar"><span class="brand"><span class="dot"></span> Velocity AI Partners</span></div>
+  <main id="main">
+    <div class="topbar"><button class="menu-btn" aria-label="Open navigation menu" aria-expanded="false">☰</button><span class="brand"><span class="dot"></span> Velocity AI Partners</span></div>
 
     <div class="hero">
       <span class="eyebrow">Client Documentation</span>
       <h1>Your guide to the Velocity AI platform</h1>
       <p class="lede">Velocity is your always-on AI texting team. It follows up with every lead and member at the right moment, books appointments, answers questions, and brings people back, while you watch it all from one dashboard. This guide explains every part of that dashboard in plain language, the campaigns running behind the scenes, and how to get the best results.</p>
+      <p class="updated">Last updated June 2026</p>
     </div>
 
     <!-- ROLE SUMMARY CARDS -->
@@ -227,7 +286,7 @@
       <h2>The Overview tab: your numbers</h2>
       <p>The Overview group is where you go to answer "is this working, and what is it earning me?" These pages turn thousands of text messages into clear performance you can act on.</p>
 
-      <div class="feature">
+      <div class="feature" id="value-tracker">
         <div class="feat-h"><span class="pin">💵</span> Value Tracker</div>
         <p>Your home screen and the most important page in the app. It answers one question honestly: <em>what is Velocity actually doing for my business?</em> At the top you pick a time window (<strong>30, 60, or 91 days</strong>) and, where relevant, the campaign you want to look at, and every number updates to match.</p>
 
@@ -255,7 +314,7 @@
         <div class="note"><span class="i">🛠️</span><p><strong>How to use it to run the business:</strong> open it weekly. A healthy <strong>Net Return</strong> is hard proof of ROI for any conversation about the spend. If <strong>Speed-to-Lead</strong> slips or <strong>Conversion Velocity</strong> slows, leads are cooling, refresh an offer or check your CRM is feeding leads in. A high <strong>After-Hours Value</strong> shows how much business you'd lose without always-on coverage. And <strong>Net Return by Location</strong> shows which studio is winning, so you can copy what it's doing everywhere else.</p></div>
       </div>
 
-      <div class="feature">
+      <div class="feature" id="analytics">
         <div class="feat-h"><span class="pin">📊</span> Analytics</div>
         <p>Where Value Tracker shows the money, Analytics shows the <em>why</em> behind it. It's organized into tabs so you can go from a high-level read down to the exact stage that needs attention.</p>
 
@@ -276,13 +335,13 @@
         <div class="note"><span class="i">🛠️</span><p><strong>How to use it to run the business:</strong> start on <strong>Summary</strong> for the trend, then open <strong>Funnel</strong> and fix the stage with the biggest drop-off, a leak between "booked" and "showed" is a no-show problem (lean on Demo Reminder), while a leak at "replied" is a messaging or offer problem. Use <strong>Schedule</strong> to time promos for when people actually respond, watch the <strong>Members</strong> tab to catch churn early and trigger retention outreach, and let <strong>A/B Analytics</strong> settle any wording debate with real numbers. Multi-location? <strong>Franchise Overview</strong> shows who's best so you can standardize on what works. Set the <strong>scheduled report</strong> so the key numbers come to you without logging in.</p></div>
       </div>
 
-      <div class="feature">
+      <div class="feature" id="auto-research">
         <div class="feat-h"><span class="pin">🧪</span> Auto Research</div>
         <p>A testing lab for your messaging. Before a wording goes out widely, Auto Research can run it past simulated customer profiles to predict how real leads and members are likely to react, so the system keeps improving what it says without experimenting on your actual customers.</p>
         <p class="feat-use"><b>Use it to:</b> understand why the AI phrases things the way it does and trust that message wording is tested, not guessed.</p>
       </div>
 
-      <div class="feature">
+      <div class="feature" id="trials-conversions">
         <div class="feat-h"><span class="pin">✅</span> Trials &amp; Conversions <span class="tag">labeled "Bookings &amp; Conversions" at Stretch locations</span></div>
         <p>Tracks the journey that matters most: people who came in for a first visit or trial and whether they converted into paying members. It connects the AI's outreach to real outcomes in your CRM so you can see conversion, not just activity.</p>
         <p class="feat-use"><b>Use it to:</b> measure trial-to-member conversion and see the AI's role in closing them.</p>
@@ -463,5 +522,73 @@
     <footer>Velocity AI Partners — Client Documentation</footer>
   </main>
 </div>
+<button class="totop" aria-label="Back to top">↑</button>
+<script>
+(function(){
+  var body=document.body;
+
+  // Mark decorative icons as hidden from assistive tech
+  document.querySelectorAll('.dot,.pin,.i,.rc-icon,.si').forEach(function(el){el.setAttribute('aria-hidden','true');});
+
+  // Mobile drawer
+  var menuBtn=document.querySelector('.menu-btn');
+  var backdrop=document.querySelector('.nav-backdrop');
+  function closeNav(){body.classList.remove('nav-open');if(menuBtn)menuBtn.setAttribute('aria-expanded','false');}
+  if(menuBtn){menuBtn.addEventListener('click',function(){var open=body.classList.toggle('nav-open');menuBtn.setAttribute('aria-expanded',open?'true':'false');});}
+  if(backdrop){backdrop.addEventListener('click',closeNav);}
+  document.querySelectorAll('aside.side a').forEach(function(a){a.addEventListener('click',closeNav);});
+
+  // Scrollspy: highlight the active section in the sidebar (position-based)
+  var links=Array.prototype.slice.call(document.querySelectorAll('.toc-group a'));
+  var map={};
+  links.forEach(function(a){var h=a.getAttribute('href');if(h&&h.charAt(0)==='#')map[h.slice(1)]=a;});
+  var targets=Object.keys(map).map(function(id){return document.getElementById(id);}).filter(Boolean);
+  var ticking=false;
+  function updateSpy(){
+    ticking=false;
+    var current=null;
+    for(var i=0;i<targets.length;i++){
+      if(targets[i].getBoundingClientRect().top<=130) current=targets[i];
+    }
+    // bottom of page: force last target active
+    if(!current && (window.innerHeight+window.scrollY)>=document.body.scrollHeight-4) current=targets[targets.length-1];
+    links.forEach(function(a){a.classList.remove('active');});
+    if(current&&map[current.id]) map[current.id].classList.add('active');
+  }
+  function requestSpy(){if(!ticking){ticking=true;requestAnimationFrame(updateSpy);}}
+  window.addEventListener('scroll',requestSpy,{passive:true});
+  window.addEventListener('resize',requestSpy,{passive:true});
+  updateSpy();
+
+  // Back to top
+  var top=document.querySelector('.totop');
+  if(top){
+    top.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+    window.addEventListener('scroll',function(){top.classList.toggle('show',window.scrollY>600);},{passive:true});
+  }
+
+  // Filter the table of contents (matches the link label AND its section's text)
+  var search=document.getElementById('tocSearch');
+  var empty=document.querySelector('.toc-empty');
+  var haystacks={};
+  links.forEach(function(a){
+    var h=a.getAttribute('href');var t=(h&&h.charAt(0)==='#')?document.getElementById(h.slice(1)):null;
+    haystacks[h]=(a.textContent+' '+(t?t.textContent:'')).toLowerCase();
+  });
+  if(search){
+    search.addEventListener('input',function(){
+      var q=search.value.trim().toLowerCase();
+      body.classList.toggle('searching',q.length>0);
+      var any=false;
+      links.forEach(function(a){
+        var match=(haystacks[a.getAttribute('href')]||'').indexOf(q)>-1;
+        a.style.display=(q===''||match)?'':'none';
+        if(match&&q!=='')any=true;
+      });
+      if(empty)empty.style.display=(q!==''&&!any)?'block':'none';
+    });
+  }
+})();
+</script>
 </body>
 </html>
