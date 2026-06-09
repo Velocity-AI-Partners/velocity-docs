@@ -85,14 +85,18 @@
   .role-cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:28px 0 6px}
   @media(max-width:760px){.role-cards{grid-template-columns:1fr}}
   .role-card{position:relative;border:1px solid var(--line);border-radius:16px;padding:26px 22px 22px;background:var(--bg-alt);box-shadow:var(--shadow);overflow:hidden}
-  .role-card::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--brand),var(--brand-2))}
-  .role-card .rc-icon{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:22px;background:linear-gradient(135deg,rgba(79,70,229,.14),rgba(139,92,246,.14));margin-bottom:12px}
-  .role-card .rc-eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand)}
+  .role-card::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--rc),var(--rc2))}
+  .role-card .rc-icon{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:22px;background:var(--rc-soft);margin-bottom:12px}
+  .role-card .rc-eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--rc)}
   .role-card h3{display:block;font-size:20px;margin:5px 0 6px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
   .role-card .rc-sub{font-size:14.5px;color:var(--ink-soft);margin:0 0 14px;font-weight:500;line-height:1.55}
   .role-card ul{margin:0;padding-left:18px}
   .role-card li{font-size:14px;margin:9px 0;color:var(--ink-soft);line-height:1.55}
   .role-card li strong{color:var(--ink)}
+  .role-card a{color:var(--rc);font-weight:600}
+  /* Manager = indigo, Staff = teal/emerald */
+  .role-card.mgr{--rc:#4f46e5;--rc2:#8b5cf6;--rc-soft:rgba(79,70,229,.12);background:linear-gradient(180deg,rgba(79,70,229,.04),var(--bg-alt))}
+  .role-card.staff{--rc:#0d9488;--rc2:#10b981;--rc-soft:rgba(13,148,136,.12);background:linear-gradient(180deg,rgba(13,148,136,.05),var(--bg-alt))}
   .mini{background:var(--bg-alt);border:1px solid var(--line);border-radius:12px;padding:16px}
   .mini h4{margin:0 0 6px;font-size:15px;font-weight:700;display:flex;gap:8px;align-items:center}
   .mini p{margin:0;font-size:14px}
@@ -151,30 +155,30 @@
 
     <!-- ROLE SUMMARY CARDS -->
     <div class="role-cards">
-      <div class="role-card">
+      <div class="role-card mgr">
         <div class="rc-icon">📈</div>
-        <div class="rc-eyebrow">Start here · Owners &amp; Managers</div>
-        <h3>Run the business by the numbers</h3>
-        <p class="rc-sub">A light weekly rhythm that turns Velocity into provable ROI and shows you exactly where to act.</p>
+        <div class="rc-eyebrow">For Owners &amp; Managers</div>
+        <h3>Let Velocity do the follow-up</h3>
+        <p class="rc-sub">The system works every lead and member for you. Here's how that makes the studio easier to run, and more profitable.</p>
         <ul>
-          <li><strong>Open the <a href="#overview-tab">Value Tracker</a> weekly.</strong> Net Return is your hard proof of ROI for any conversation about the spend.</li>
-          <li><strong>Fix the funnel.</strong> In <a href="#overview-tab">Analytics → Funnel</a>, find the biggest drop-off and address that one stage.</li>
-          <li><strong>Keep the <a href="#information-sets">Knowledge Base</a> current.</strong> Prices, hours, and offers, this is your single biggest lever on results.</li>
-          <li><strong>Control <a href="#campaigns">Campaigns</a>.</strong> Switch any campaign on or off for your studio and watch its response and booking rates.</li>
-          <li><strong>Compare locations.</strong> Rank studios in Franchise Overview, then copy what your best one is doing everywhere.</li>
+          <li><strong>Fill your calendar without adding staff.</strong> The AI texts every new lead in seconds and keeps following up, so visits get booked without anyone chasing them.</li>
+          <li><strong>Prove the ROI in one screen.</strong> The <a href="#overview-tab">Value Tracker</a> shows exactly what the system earns you, ready for any budget or ownership conversation.</li>
+          <li><strong>Capture the business you used to miss.</strong> Leads that arrive nights, weekends, and holidays get worked and booked while you're closed.</li>
+          <li><strong>Find your best playbook and copy it.</strong> See which location and <a href="#campaigns">campaign</a> performs best, then roll that out across every studio.</li>
+          <li><strong>Stay in control without micromanaging.</strong> Anything sensitive is flagged for a person, so you only weigh in on the conversations that matter.</li>
         </ul>
       </div>
-      <div class="role-card">
-        <div class="rc-icon">💬</div>
-        <div class="rc-eyebrow">Start here · Front Desk &amp; Staff</div>
-        <h3>Maximize value in minutes a day</h3>
-        <p class="rc-sub">A short daily habit that keeps every AI conversation accurate, covered, and converting.</p>
+      <div class="role-card staff">
+        <div class="rc-icon">💪</div>
+        <div class="rc-eyebrow">For Front Desk &amp; Staff</div>
+        <h3>Let the AI handle the busywork</h3>
+        <p class="rc-sub">Velocity takes the repetitive texting off your plate. Here's how to lean on it so you can focus on the members in front of you.</p>
         <ul>
-          <li><strong>Clear the <a href="#information-sets">Red Flag</a> queue daily.</strong> A quick glance, approve or rewrite the few threads that need a human.</li>
-          <li><strong>Watch <a href="#ai-employees">Conversations</a>.</strong> See what leads and members are saying, and take over a thread the moment it needs you.</li>
-          <li><strong>Sync the schedule.</strong> Check <a href="#information-sets">Booking Notifications</a> so the front desk always knows what the AI booked.</li>
-          <li><strong>Don't cross wires.</strong> Let the AI finish or take a thread over fully, never text in the middle of an active AI conversation.</li>
-          <li><strong>Flag changes fast.</strong> New price, hour, or promo? Tell your manager so the Knowledge Base stays accurate.</li>
+          <li><strong>Skip the cold follow-up.</strong> The AI sends the reminders, win-back texts, and check-ins, so you're not stuck on the phone all day.</li>
+          <li><strong>Greet leads who are already warm.</strong> People show up answered and booked, so your job is welcoming and closing, not chasing.</li>
+          <li><strong>Only handle what truly needs you.</strong> The AI clears routine questions and <a href="#information-sets">flags</a> just the few conversations that need a human touch.</li>
+          <li><strong>Let the schedule fill itself.</strong> <a href="#information-sets">Booking Notifications</a> tell you what the AI booked, so the calendar stays full without you working leads.</li>
+          <li><strong>Win on the numbers that get noticed.</strong> Faster replies and fewer no-shows mean better results with less effort from you.</li>
         </ul>
       </div>
     </div>
