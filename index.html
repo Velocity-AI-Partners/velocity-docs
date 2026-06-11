@@ -85,12 +85,12 @@
   .role-cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:28px 0 6px}
   @media(max-width:760px){.role-cards{grid-template-columns:1fr}}
 
-  /* Most asked strip */
-  .most-asked{margin:22px 0 4px;padding:16px 18px;background:var(--bg-alt);border:1px solid var(--line);border-radius:14px}
+  /* Most asked box */
+  .most-asked{margin:22px 0 4px;padding:18px 20px;background:var(--bg-alt);border:1px solid var(--line);border-radius:14px}
   .most-asked .ma-lbl{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px}
-  .most-asked .ma-chips{display:flex;flex-wrap:wrap;gap:8px}
-  .most-asked a{display:inline-block;font-size:13.5px;font-weight:600;color:var(--ink-soft);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:7px 14px;text-decoration:none;line-height:1.3}
-  .most-asked a:hover{color:var(--brand);border-color:rgba(79,70,229,.35);background:rgba(79,70,229,.05)}
+  .most-asked ul{margin:0;padding-left:20px}
+  .most-asked li{font-size:14.5px;margin:9px 0;color:var(--ink-soft);line-height:1.55}
+  .most-asked li strong{color:var(--ink)}
   .role-card{position:relative;border:1px solid var(--line);border-radius:16px;padding:26px 22px 22px;background:var(--bg-alt);box-shadow:var(--shadow);overflow:hidden}
   .role-card::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--rc),var(--rc2))}
   .role-card .rc-icon{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:22px;background:var(--rc-soft);margin-bottom:12px}
@@ -252,14 +252,15 @@
     <!-- MOST ASKED -->
     <div class="most-asked">
       <div class="ma-lbl">Most asked</div>
-      <div class="ma-chips">
-        <a href="#value-tracker">What is the AI earning us?</a>
-        <a href="#ai-employees">Can I take over a conversation?</a>
-        <a href="#knowledge-base">How do I update pricing, hours, or a promo?</a>
-        <a href="#do-not-contact">How do I stop texts to one person?</a>
-        <a href="#booking-notifications">Where do I see appointments the AI booked?</a>
-        <a href="#faq">Will the AI say something wrong about my business?</a>
-      </div>
+      <ul>
+        <li><strong>What does Velocity actually do?</strong> It texts every lead and member at the right moment from your studio's number, answers their questions, and books them in, automatically.</li>
+        <li><strong>Do I have to run anything day to day?</strong> No. The campaigns run themselves; you check your numbers and step in only when a conversation is flagged for a human.</li>
+        <li><strong>What is it earning me?</strong> The Value Tracker shows it in dollars: revenue added plus labor saved, minus what you pay. Net Return is your bottom line.</li>
+        <li><strong>How do I change what the AI says about pricing, hours, or offers?</strong> Update the Knowledge Base (or tell us) and every future text uses the new facts.</li>
+        <li><strong>Can my team take over a conversation?</strong> Yes, any time. Open the thread and reply; the AI steps back so you're not both talking.</li>
+        <li><strong>What if someone doesn't want texts?</strong> Handled automatically. A "STOP" reply (or a polite no-thanks) puts them on the Do Not Contact list and all outreach ends.</li>
+        <li><strong>How do I know when it books someone?</strong> Booking Notifications keeps a running log of every appointment the AI books, so your front desk is never surprised.</li>
+      </ul>
     </div>
 
     <!-- 01 OVERVIEW -->
