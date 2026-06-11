@@ -84,6 +84,13 @@
   /* Role summary cards (top of page) */
   .role-cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:28px 0 6px}
   @media(max-width:760px){.role-cards{grid-template-columns:1fr}}
+
+  /* Most asked strip */
+  .most-asked{margin:22px 0 4px;padding:16px 18px;background:var(--bg-alt);border:1px solid var(--line);border-radius:14px}
+  .most-asked .ma-lbl{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px}
+  .most-asked .ma-chips{display:flex;flex-wrap:wrap;gap:8px}
+  .most-asked a{display:inline-block;font-size:13.5px;font-weight:600;color:var(--ink-soft);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:7px 14px;text-decoration:none;line-height:1.3}
+  .most-asked a:hover{color:var(--brand);border-color:rgba(79,70,229,.35);background:rgba(79,70,229,.05)}
   .role-card{position:relative;border:1px solid var(--line);border-radius:16px;padding:26px 22px 22px;background:var(--bg-alt);box-shadow:var(--shadow);overflow:hidden}
   .role-card::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--rc),var(--rc2))}
   .role-card .rc-icon{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:22px;background:var(--rc-soft);margin-bottom:12px}
@@ -242,6 +249,19 @@
       </div>
     </div>
 
+    <!-- MOST ASKED -->
+    <div class="most-asked">
+      <div class="ma-lbl">Most asked</div>
+      <div class="ma-chips">
+        <a href="#value-tracker">What is the AI earning us?</a>
+        <a href="#ai-employees">Can I take over a conversation?</a>
+        <a href="#knowledge-base">How do I update pricing, hours, or a promo?</a>
+        <a href="#do-not-contact">How do I stop texts to one person?</a>
+        <a href="#booking-notifications">Where do I see appointments the AI booked?</a>
+        <a href="#faq">Will the AI say something wrong about my business?</a>
+      </div>
+    </div>
+
     <!-- 01 OVERVIEW -->
     <section id="overview">
       <div class="sec-num">01</div>
@@ -395,7 +415,7 @@
       <h2>Information Sets: the controls</h2>
       <p>If the AI Employees are the staff, Information Sets are the training manual and the rules they follow. This is where you keep what the AI knows accurate and see exactly how it behaves. A few minutes spent here is the single biggest lever on your results.</p>
 
-      <div class="feature">
+      <div class="feature" id="knowledge-base">
         <div class="feat-h"><span class="pin">📚</span> Knowledge Base</div>
         <figure class="shot"><img src="images/knowledge-base.png" alt="Business Knowledge Base table of entries by scope, category and priority" loading="lazy" /><figcaption>Knowledge Base for West Boylston: the facts the AI answers from, each with a scope, category and priority.</figcaption></figure>
         <p>The facts the AI uses to answer questions: your pricing, hours, location, programs, current offers, and policies. The AI only speaks as accurately as this page allows, so keeping it current is the most valuable thing you can do. You can add and edit your own studio's entries right on this page; brand-wide entries are managed by Velocity. When a price or promo changes, update it here (or tell your Velocity contact) and every future message reflects it instantly.</p>
@@ -414,13 +434,13 @@
         <p>The human-review queue. When the AI encounters something sensitive or that it isn't confident about, it sets the message aside here for a person to check or rewrite, rather than guessing. A quick daily glance ensures the handful of conversations that need a personal touch get one.</p>
       </div>
 
-      <div class="feature">
+      <div class="feature" id="do-not-contact">
         <div class="feat-h"><span class="pin">🚫</span> Do Not Contact</div>
         <figure class="shot"><img src="images/do-not-contact.png" alt="Do Not Contact list of opted-out contacts by keyword and date" loading="lazy" /><figcaption>Do Not Contact for West Boylston: everyone who opted out, with the keyword and date, excluded from all outreach.</figcaption></figure>
         <p>The suppression list. Anyone who opts out, replies "STOP," or shouldn't be messaged is recorded here and automatically excluded from all outreach. Opt-outs are handled for you and compliantly, this page is simply your visibility into who's on the list.</p>
       </div>
 
-      <div class="feature">
+      <div class="feature" id="booking-notifications">
         <div class="feat-h"><span class="pin">📅</span> Booking Notifications</div>
         <figure class="shot"><img src="images/booking-notifications.png" alt="Booking Notifications log of appointments the AI has booked" loading="lazy" /><figcaption>Booking Notifications for West Boylston: a running log of every appointment the AI has booked.</figcaption></figure>
         <p>A running log of the appointments the AI has booked, so your front desk always knows what's coming in from automated conversations. Use it to keep your schedule and your team in sync with what the assistant is doing.</p>
