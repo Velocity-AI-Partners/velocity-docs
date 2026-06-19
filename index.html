@@ -183,6 +183,16 @@
     <div class="brand"><span class="dot"></span> Velocity AI Partners</div>
     <div class="toc-search"><span class="si" aria-hidden="true">🔍</span><input type="search" id="tocSearch" placeholder="Filter sections…" aria-label="Filter sections" /></div>
     <div class="toc-group">
+      <div class="lbl">Campaigns</div>
+      <a href="#campaigns">All campaigns</a>
+      <a href="#cmp-nurture" class="sub">Lead Nurture</a>
+      <a href="#cmp-reactivation" class="sub">Lead Reactivation</a>
+      <a href="#cmp-appointment" class="sub">Appointment</a>
+      <a href="#cmp-retention" class="sub">Client Retention</a>
+      <a href="#cmp-exmember" class="sub">Ex-Member</a>
+      <a href="#cmp-other" class="sub">Other channels</a>
+    </div>
+    <div class="toc-group">
       <div class="lbl">Getting Started</div>
       <a href="#overview">Overview</a>
       <a href="#how-it-works">How it works</a>
@@ -197,7 +207,6 @@
       <a href="#trials-conversions" class="sub">Trials &amp; Conversions</a>
       <a href="#ai-employees">Your AI Employees</a>
       <a href="#information-sets">Information Sets</a>
-      <a href="#campaigns">Campaigns</a>
     </div>
     <div class="toc-group">
       <div class="lbl">Help &amp; Reference</div>
@@ -263,18 +272,112 @@
       </ul>
     </div>
 
-    <!-- 01 OVERVIEW -->
-    <section id="overview">
+    <!-- 01 CAMPAIGNS -->
+    <section id="campaigns">
       <div class="sec-num">01</div>
+      <h2>Campaigns</h2>
+      <p>Campaigns are the automated message flows that do the actual outreach, each one triggered by a real event in your CRM. The <strong>Campaigns</strong> page in your dashboard shows every campaign type and whether it's <em>Active</em> for your location, and for each one, four numbers at a glance: <strong>Total Sent</strong>, <strong>In Follow-up</strong>, <strong>Response Rate</strong>, and <strong>Booking Rate</strong>, plus the exact message sequence it sends. Want a campaign switched on, paused, or reworded? Tell your Velocity contact and it's done the same day.</p>
+      <p>You don't run these day to day. Below is every campaign type, grouped into the families they belong to, and exactly what it does, so you always know what your leads and members are receiving. The short line under each name is the description shown on the Campaigns page itself.</p>
+      <figure class="shot"><img src="images/campaigns.png" alt="Campaigns page with status cards, performance stats, and the message sequence" loading="lazy" /><figcaption>Campaigns for West Boylston: every campaign's live status and sent count, the four performance stats, and the message sequence below.</figcaption></figure>
+
+      <h3 id="cmp-nurture"><span class="pin">🌱</span> Lead Nurture, for brand-new leads</h3>
+      <div class="feature">
+        <div class="feat-h">Lead Nurture</div>
+        <div class="meta"><span class="tag b">Fires when a new lead arrives</span><span class="tag">Engage new leads with automated SMS sequences</span></div>
+        <p>The instant a new lead comes in, the AI texts to introduce your studio, answer first questions, and guide them toward booking a first visit, all while interest is still hot. Fast first contact is the single biggest driver of lead conversion, and this runs in seconds, any time of day, then keeps following up over a sequence so no one is forgotten after one unanswered text.</p>
+      </div>
+      <div class="feature">
+        <div class="feat-h">Booking Reminder</div>
+        <div class="meta"><span class="tag b">Fires after a new lead books a first visit</span><span class="tag">Remind a lead about their upcoming visit</span></div>
+        <p>Once a new lead has a visit on the calendar, a friendly reminder keeps it top of mind and makes it easy to confirm or move the time, so first appointments actually happen instead of quietly slipping away.</p>
+      </div>
+
+      <h3 id="cmp-reactivation"><span class="pin">🔄</span> Lead Reactivation, for leads who went quiet</h3>
+      <div class="feature">
+        <div class="feat-h">Cold Lead Reactivation</div>
+        <div class="meta"><span class="tag b">Fires for old leads who never booked</span><span class="tag">Revive long-dormant leads</span></div>
+        <p>Reaches back out to older leads who once showed interest but never booked, with a fresh, low-pressure nudge that recovers appointments from a list most studios write off and never touch again. Each person is approached just once, so it never feels like spam.</p>
+      </div>
+      <div class="feature">
+        <div class="feat-h">Warm Lead Reactivation</div>
+        <div class="meta"><span class="tag b">Fires for recently engaged leads who stalled</span><span class="tag">Re-engage leads who replied but didn't book</span></div>
+        <p>For leads who were talking with you recently but stopped short of booking, a timely follow-up picks the conversation back up while they still remember you and your offer.</p>
+      </div>
+      <div class="feature">
+        <div class="feat-h">Demo Didn't Convert</div>
+        <div class="meta"><span class="tag b">Fires ~1 month after an attended demo</span><span class="tag">Win back demos that didn't sign up</span></div>
+        <p>About a month after someone came in for a demo or intro session but didn't join, the AI checks back in, gently addresses what held them back, and invites them to commit, recovering sales that would otherwise walk out the door.</p>
+      </div>
+
+      <h3 id="cmp-appointment"><span class="pin">📅</span> Appointment, around a booked session</h3>
+      <div class="feature">
+        <div class="feat-h">Demo Reminder</div>
+        <div class="meta"><span class="tag b">Fires ~2 hours before a booked demo</span><span class="tag">Confirm or reschedule an upcoming appointment</span></div>
+        <p>About two hours before a booked demo, the AI sends a reminder text asking the person to confirm they're still coming, or to reschedule if they can't make it. It's one of the most effective ways to cut no-shows: every confirmed appointment is one your team can count on, and anyone who needs to move their slot can do it right from the text instead of simply not showing up.</p>
+      </div>
+      <div class="feature">
+        <div class="feat-h">Post-Appointment Follow-up</div>
+        <div class="meta"><span class="tag b">Fires after a completed visit</span><span class="tag">Check in and set the next step</span></div>
+        <p>After someone finishes a visit, a warm check-in thanks them, gets a quick read on how it went, and points them to a clear next step, so a good first impression turns into a second visit instead of a dead end.</p>
+      </div>
+      <div class="feature">
+        <div class="feat-h">Cancel / No-Show, No Rebook</div>
+        <div class="meta"><span class="tag b">Fires on a no-show, or a cancel with no new booking</span><span class="tag">Recover missed and cancelled appointments</span></div>
+        <p>When someone misses their appointment, or cancels and hasn't booked a new time within about a week, the AI reaches out to get them back on the calendar, so a missed slot is never the end of the conversation.</p>
+      </div>
+
+      <h3 id="cmp-retention"><span class="pin">❤️</span> Client Retention, for active members</h3>
+      <div class="feature">
+        <div class="feat-h">High-Risk Check-in</div>
+        <div class="meta"><span class="tag b">Fires for members showing strong churn signals</span><span class="tag">Ask for feedback and save the membership</span></div>
+        <p>When a member looks at real risk of leaving, the AI reaches out to ask how things are going and what could be better, surfacing problems early so you can fix them and keep the membership before it lapses.</p>
+      </div>
+      <div class="feature">
+        <div class="feat-h">Medium-Risk Check-in</div>
+        <div class="meta"><span class="tag b">Fires for members starting to drift</span><span class="tag">Re-engage and encourage a booking</span></div>
+        <p>For members whose attendance is starting to slip, a friendly nudge checks in and encourages them to get their next session on the calendar, before a quiet stretch turns into a cancellation.</p>
+      </div>
+      <div class="feature">
+        <div class="feat-h">Birthday Greeting</div>
+        <div class="meta"><span class="tag b">Fires on a member's birthday</span><span class="tag">Send a warm birthday message</span></div>
+        <p>A simple, personal happy-birthday text that reminds members you care about them as people, not just attendance, the kind of small touch that keeps people loyal.</p>
+      </div>
+      <div class="note"><span class="i">🎯</span><p>Retention outreach is aimed at the members who need it most, the high-risk and medium-risk groups, and skips members who already have a stack of unused credits to work through, so the messages always land as relevant rather than pushy.</p></div>
+
+      <h3 id="cmp-exmember"><span class="pin">💜</span> Ex-Member, for people who've left</h3>
+      <div class="feature">
+        <div class="feat-h">Ex-Member Winback</div>
+        <div class="meta"><span class="tag b">Fires for cancelled / former members</span><span class="tag">Win back former members, and learn why they left</span></div>
+        <p>Respectfully invites former members to return, often paired with the right offer, recovering revenue from people who already know and like your studio, usually your warmest audience. A short exit survey is built into the sequence, so even the ones who don't come back tell you why they left.</p>
+      </div>
+
+      <h3 id="cmp-other"><span class="pin">🌐</span> Other channels</h3>
+      <div class="feature">
+        <div class="feat-h">Website Inquiry</div>
+        <div class="meta"><span class="tag b">Fires when someone messages through your website</span><span class="tag">Answer website contact-form leads fast</span></div>
+        <p>When a prospect fills out a form or message box on your website, the AI replies right away to answer their question and move them toward a booking, so web leads get the same instant response as everyone else instead of waiting for someone to check the inbox.</p>
+      </div>
+      <div class="feature">
+        <div class="feat-h">Manychat / Messenger</div>
+        <div class="meta"><span class="tag b">Fires for social DMs</span><span class="tag">Engage leads who message on social</span></div>
+        <p>For studios running social campaigns, the AI handles incoming Facebook and Instagram messages the same way it handles texts, answering questions and guiding people toward a first visit without you having to watch the inbox.</p>
+      </div>
+
+      <div class="note"><span class="i">🧩</span><p>Not every campaign runs at every location. Which ones are active depends on your brand, your CRM, and what you've asked us to turn on. If a campaign you want isn't running for your studio yet, just ask and we'll switch it on.</p></div>
+    </section>
+
+    <!-- 02 OVERVIEW -->
+    <section id="overview">
+      <div class="sec-num">02</div>
       <h2>Overview</h2>
       <p>Velocity connects to your booking system (ClubReady, WellnessLiving, or Spark) and watches for the moments that matter: a new lead, an upcoming appointment, a member who's gone quiet, a cancellation. When one of those moments happens, an AI assistant reaches out by text from your studio's number, holds a natural back-and-forth conversation, and drives toward the outcome you want, usually a booked visit or a renewed membership.</p>
       <p>Everything the AI does is visible to you in real time. You can read any conversation, step in whenever you like, see exactly how much revenue the system is producing, and control the facts it uses to answer questions. Nothing is a black box.</p>
       <div class="note"><span class="i">💡</span><p><strong>The one-line version:</strong> Velocity is the follow-up your team never has time for, done instantly, consistently, and around the clock, for every single lead and member.</p></div>
     </section>
 
-    <!-- 02 HOW IT WORKS -->
+    <!-- 03 HOW IT WORKS -->
     <section id="how-it-works">
-      <div class="sec-num">02</div>
+      <div class="sec-num">03</div>
       <h2>How it works</h2>
       <p>You don't have to run anything day to day. The system runs a simple loop for you:</p>
       <ol>
@@ -287,9 +390,9 @@
       <p>Your job is light: keep the AI's knowledge accurate, glance at flagged conversations, and check your numbers. The rest of this guide walks through where to do each of those things.</p>
     </section>
 
-    <!-- 03 KEY CONCEPTS -->
+    <!-- 04 KEY CONCEPTS -->
     <section id="concepts">
-      <div class="sec-num">03</div>
+      <div class="sec-num">04</div>
       <h2>Key concepts</h2>
       <p>The dashboard is organized around a few simple ideas. Once these click, everything else is easy to find.</p>
 
@@ -301,9 +404,9 @@
       </div>
     </section>
 
-    <!-- 04 OVERVIEW TAB -->
+    <!-- 05 OVERVIEW TAB -->
     <section id="overview-tab">
-      <div class="sec-num">04</div>
+      <div class="sec-num">05</div>
       <h2>The Overview tab: your numbers</h2>
       <p>The Overview group is where you go to answer "is this working, and what is it earning me?" These pages turn thousands of text messages into clear performance you can act on.</p>
 
@@ -372,9 +475,9 @@
       </div>
     </section>
 
-    <!-- 05 AI EMPLOYEES -->
+    <!-- 06 AI EMPLOYEES -->
     <section id="ai-employees">
-      <div class="sec-num">05</div>
+      <div class="sec-num">06</div>
       <h2>Your AI Employees</h2>
       <p>This group is the working floor, the live conversation inboxes. Each AI Employee handles one category of contact. You can open any of them to read every thread, see status at a glance, and jump in to take over whenever you want.</p>
 
@@ -410,9 +513,9 @@
       <div class="note"><span class="i">👀</span><p>You can take over any conversation at any time. When you do, the AI steps back so you and the assistant aren't both replying at once. See best practice #2 in section 08.</p></div>
     </section>
 
-    <!-- 06 INFORMATION SETS -->
+    <!-- 07 INFORMATION SETS -->
     <section id="information-sets">
-      <div class="sec-num">06</div>
+      <div class="sec-num">07</div>
       <h2>Information Sets: the controls</h2>
       <p>If the AI Employees are the staff, Information Sets are the training manual and the rules they follow. This is where you keep what the AI knows accurate and see exactly how it behaves. A few minutes spent here is the single biggest lever on your results.</p>
 
@@ -446,100 +549,6 @@
         <figure class="shot"><img src="images/booking-notifications.png" alt="Booking Notifications log of appointments the AI has booked" loading="lazy" /><figcaption>Booking Notifications for West Boylston: a running log of every appointment the AI has booked.</figcaption></figure>
         <p>A running log of the appointments the AI has booked, so your front desk always knows what's coming in from automated conversations. Use it to keep your schedule and your team in sync with what the assistant is doing.</p>
       </div>
-    </section>
-
-    <!-- 07 CAMPAIGNS -->
-    <section id="campaigns">
-      <div class="sec-num">07</div>
-      <h2>Campaigns</h2>
-      <p>Campaigns are the automated message flows that do the actual outreach, each one triggered by a real event in your CRM. The <strong>Campaigns</strong> page in your dashboard shows every campaign type and whether it's <em>Active</em> for your location, and for each one, four numbers at a glance: <strong>Total Sent</strong>, <strong>In Follow-up</strong>, <strong>Response Rate</strong>, and <strong>Booking Rate</strong>, plus the exact message sequence it sends. Want a campaign switched on, paused, or reworded? Tell your Velocity contact and it's done the same day.</p>
-      <p>You don't run these day to day. Below is every campaign type, grouped into the families they belong to, and exactly what it does, so you always know what your leads and members are receiving. The short line under each name is the description shown on the Campaigns page itself.</p>
-      <figure class="shot"><img src="images/campaigns.png" alt="Campaigns page with status cards, performance stats, and the message sequence" loading="lazy" /><figcaption>Campaigns for West Boylston: every campaign's live status and sent count, the four performance stats, and the message sequence below.</figcaption></figure>
-
-      <h3><span class="pin">🌱</span> Lead Nurture, for brand-new leads</h3>
-      <div class="feature">
-        <div class="feat-h">Lead Nurture</div>
-        <div class="meta"><span class="tag b">Fires when a new lead arrives</span><span class="tag">Engage new leads with automated SMS sequences</span></div>
-        <p>The instant a new lead comes in, the AI texts to introduce your studio, answer first questions, and guide them toward booking a first visit, all while interest is still hot. Fast first contact is the single biggest driver of lead conversion, and this runs in seconds, any time of day, then keeps following up over a sequence so no one is forgotten after one unanswered text.</p>
-      </div>
-      <div class="feature">
-        <div class="feat-h">Booking Reminder</div>
-        <div class="meta"><span class="tag b">Fires after a new lead books a first visit</span><span class="tag">Remind a lead about their upcoming visit</span></div>
-        <p>Once a new lead has a visit on the calendar, a friendly reminder keeps it top of mind and makes it easy to confirm or move the time, so first appointments actually happen instead of quietly slipping away.</p>
-      </div>
-
-      <h3><span class="pin">🔄</span> Lead Reactivation, for leads who went quiet</h3>
-      <div class="feature">
-        <div class="feat-h">Cold Lead Reactivation</div>
-        <div class="meta"><span class="tag b">Fires for old leads who never booked</span><span class="tag">Revive long-dormant leads</span></div>
-        <p>Reaches back out to older leads who once showed interest but never booked, with a fresh, low-pressure nudge that recovers appointments from a list most studios write off and never touch again. Each person is approached just once, so it never feels like spam.</p>
-      </div>
-      <div class="feature">
-        <div class="feat-h">Warm Lead Reactivation</div>
-        <div class="meta"><span class="tag b">Fires for recently engaged leads who stalled</span><span class="tag">Re-engage leads who replied but didn't book</span></div>
-        <p>For leads who were talking with you recently but stopped short of booking, a timely follow-up picks the conversation back up while they still remember you and your offer.</p>
-      </div>
-      <div class="feature">
-        <div class="feat-h">Demo Didn't Convert</div>
-        <div class="meta"><span class="tag b">Fires ~1 month after an attended demo</span><span class="tag">Win back demos that didn't sign up</span></div>
-        <p>About a month after someone came in for a demo or intro session but didn't join, the AI checks back in, gently addresses what held them back, and invites them to commit, recovering sales that would otherwise walk out the door.</p>
-      </div>
-
-      <h3><span class="pin">📅</span> Appointment, around a booked session</h3>
-      <div class="feature">
-        <div class="feat-h">Demo Reminder</div>
-        <div class="meta"><span class="tag b">Fires ~2 hours before a booked demo</span><span class="tag">Confirm or reschedule an upcoming appointment</span></div>
-        <p>About two hours before a booked demo, the AI sends a reminder text asking the person to confirm they're still coming, or to reschedule if they can't make it. It's one of the most effective ways to cut no-shows: every confirmed appointment is one your team can count on, and anyone who needs to move their slot can do it right from the text instead of simply not showing up.</p>
-      </div>
-      <div class="feature">
-        <div class="feat-h">Post-Appointment Follow-up</div>
-        <div class="meta"><span class="tag b">Fires after a completed visit</span><span class="tag">Check in and set the next step</span></div>
-        <p>After someone finishes a visit, a warm check-in thanks them, gets a quick read on how it went, and points them to a clear next step, so a good first impression turns into a second visit instead of a dead end.</p>
-      </div>
-      <div class="feature">
-        <div class="feat-h">Cancel / No-Show, No Rebook</div>
-        <div class="meta"><span class="tag b">Fires on a no-show, or a cancel with no new booking</span><span class="tag">Recover missed and cancelled appointments</span></div>
-        <p>When someone misses their appointment, or cancels and hasn't booked a new time within about a week, the AI reaches out to get them back on the calendar, so a missed slot is never the end of the conversation.</p>
-      </div>
-
-      <h3><span class="pin">❤️</span> Client Retention, for active members</h3>
-      <div class="feature">
-        <div class="feat-h">High-Risk Check-in</div>
-        <div class="meta"><span class="tag b">Fires for members showing strong churn signals</span><span class="tag">Ask for feedback and save the membership</span></div>
-        <p>When a member looks at real risk of leaving, the AI reaches out to ask how things are going and what could be better, surfacing problems early so you can fix them and keep the membership before it lapses.</p>
-      </div>
-      <div class="feature">
-        <div class="feat-h">Medium-Risk Check-in</div>
-        <div class="meta"><span class="tag b">Fires for members starting to drift</span><span class="tag">Re-engage and encourage a booking</span></div>
-        <p>For members whose attendance is starting to slip, a friendly nudge checks in and encourages them to get their next session on the calendar, before a quiet stretch turns into a cancellation.</p>
-      </div>
-      <div class="feature">
-        <div class="feat-h">Birthday Greeting</div>
-        <div class="meta"><span class="tag b">Fires on a member's birthday</span><span class="tag">Send a warm birthday message</span></div>
-        <p>A simple, personal happy-birthday text that reminds members you care about them as people, not just attendance, the kind of small touch that keeps people loyal.</p>
-      </div>
-      <div class="note"><span class="i">🎯</span><p>Retention outreach is aimed at the members who need it most, the high-risk and medium-risk groups, and skips members who already have a stack of unused credits to work through, so the messages always land as relevant rather than pushy.</p></div>
-
-      <h3><span class="pin">💜</span> Ex-Member, for people who've left</h3>
-      <div class="feature">
-        <div class="feat-h">Ex-Member Winback</div>
-        <div class="meta"><span class="tag b">Fires for cancelled / former members</span><span class="tag">Win back former members, and learn why they left</span></div>
-        <p>Respectfully invites former members to return, often paired with the right offer, recovering revenue from people who already know and like your studio, usually your warmest audience. A short exit survey is built into the sequence, so even the ones who don't come back tell you why they left.</p>
-      </div>
-
-      <h3><span class="pin">🌐</span> Other channels</h3>
-      <div class="feature">
-        <div class="feat-h">Website Inquiry</div>
-        <div class="meta"><span class="tag b">Fires when someone messages through your website</span><span class="tag">Answer website contact-form leads fast</span></div>
-        <p>When a prospect fills out a form or message box on your website, the AI replies right away to answer their question and move them toward a booking, so web leads get the same instant response as everyone else instead of waiting for someone to check the inbox.</p>
-      </div>
-      <div class="feature">
-        <div class="feat-h">Manychat / Messenger</div>
-        <div class="meta"><span class="tag b">Fires for social DMs</span><span class="tag">Engage leads who message on social</span></div>
-        <p>For studios running social campaigns, the AI handles incoming Facebook and Instagram messages the same way it handles texts, answering questions and guiding people toward a first visit without you having to watch the inbox.</p>
-      </div>
-
-      <div class="note"><span class="i">🧩</span><p>Not every campaign runs at every location. Which ones are active depends on your brand, your CRM, and what you've asked us to turn on. If a campaign you want isn't running for your studio yet, just ask and we'll switch it on.</p></div>
     </section>
 
     <!-- 08 BEST PRACTICES -->
